@@ -4,10 +4,12 @@ import { MoviesList } from './components/MoviesList';
 import moviesFromServer from './api/movies.json';
 
 function getFilterMovies(movies, { query }) {
+  let filteredMovies = movies;
+
   if (query) {
     const queryTrimmed = query.trim().toLowerCase();
 
-    movies.filter(movie => {
+    filteredMovies = movies.filter(movie => {
       const movieDescription = movie.description.toLowerCase();
       const movieTitle = movie.title.toLowerCase();
 
@@ -18,7 +20,7 @@ function getFilterMovies(movies, { query }) {
     });
   }
 
-  return movies;
+  return filteredMovies;
 }
 
 export const App = () => {
